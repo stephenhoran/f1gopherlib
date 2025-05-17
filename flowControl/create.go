@@ -17,9 +17,10 @@ package flowControl
 
 import (
 	"context"
-	"github.com/f1gopher/f1gopherlib/Messages"
 	"sync"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib/Messages"
 )
 
 type Flow interface {

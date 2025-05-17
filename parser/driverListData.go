@@ -17,11 +17,12 @@ package parser
 
 import (
 	"fmt"
-	"github.com/f1gopher/f1gopherlib/Messages"
-	"github.com/f1gopher/f1gopherlib/connection"
 	"image/color"
 	"strconv"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib/Messages"
+	"github.com/stephenhoran/f1gopherlib/connection"
 )
 
 func (p *Parser) parseDriverList(dat map[string]interface{}, timestamp time.Time) []Messages.Drivers {

@@ -16,8 +16,9 @@
 package parser
 
 import (
-	"github.com/f1gopher/f1gopherlib/Messages"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib/Messages"
 )
 
 func (p *Parser) parseCurrentLapData(dat map[string]interface{}, timestamp time.Time) (Messages.Event, error) {

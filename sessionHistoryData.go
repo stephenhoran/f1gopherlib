@@ -18,7 +18,7 @@ package f1gopherlib
 import (
 	"time"
 
-	"github.com/f1gopher/f1gopherlib/Messages"
+	"github.com/stephenhoran/f1gopherlib/Messages"
 )
 
 var sessionHistory = [...]RaceEvent{

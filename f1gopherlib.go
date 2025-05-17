@@ -24,11 +24,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/f1gopher/f1gopherlib/Messages"
-	"github.com/f1gopher/f1gopherlib/connection"
-	"github.com/f1gopher/f1gopherlib/f1log"
-	"github.com/f1gopher/f1gopherlib/flowControl"
-	"github.com/f1gopher/f1gopherlib/parser"
+	"github.com/stephenhoran/f1gopherlib/Messages"
+	"github.com/stephenhoran/f1gopherlib/connection"
+	"github.com/stephenhoran/f1gopherlib/f1log"
+	"github.com/stephenhoran/f1gopherlib/flowControl"
+	"github.com/stephenhoran/f1gopherlib/parser"
 )
 
 type F1GopherLib interface {
@@ -196,7 +196,7 @@ func (r *RaceEvent) Url() string {
 	return r.urlName
 }
 
-func CreateLive(requestedData parser.DataSource, archive string, cache string) (F1GopherLib, error) {
+func CreateLiveWithCache(requestedData parser.DataSource, archive string, cache string) (F1GopherLib, error) {
 
 	// TODO - validate path
 	// TODO - create archive folder

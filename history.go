@@ -16,8 +16,9 @@
 package f1gopherlib
 
 import (
-	"github.com/f1gopher/f1gopherlib/Messages"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib/Messages"
 )
 
 func RaceHistory() []RaceEvent {

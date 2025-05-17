@@ -17,11 +17,12 @@ package connection
 
 import (
 	"bufio"
-	"github.com/f1gopher/f1gopherlib/f1log"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
+
+	"github.com/stephenhoran/f1gopherlib/f1log"
 )
 
 type AssetStore interface {

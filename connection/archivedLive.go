@@ -18,10 +18,11 @@ package connection
 import (
 	"bufio"
 	"context"
-	"github.com/f1gopher/f1gopherlib/f1log"
 	"os"
 	"sync"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib/f1log"
 )
 
 type archivedLive struct {

@@ -16,10 +16,11 @@
 package parser
 
 import (
-	"github.com/f1gopher/f1gopherlib/Messages"
-	"github.com/f1gopher/f1gopherlib/connection"
 	"reflect"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib/Messages"
+	"github.com/stephenhoran/f1gopherlib/connection"
 )
 
 func (p *Parser) parseTeamRadioData(dat map[string]interface{}, timestamp time.Time) ([]Messages.Radio, error) {

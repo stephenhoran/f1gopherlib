@@ -22,14 +22,15 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"github.com/f1gopher/f1gopherlib/Messages"
-	"github.com/f1gopher/f1gopherlib/connection"
-	"github.com/f1gopher/f1gopherlib/f1log"
-	"github.com/f1gopher/f1gopherlib/flowControl"
 	"io"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib/Messages"
+	"github.com/stephenhoran/f1gopherlib/connection"
+	"github.com/stephenhoran/f1gopherlib/f1log"
+	"github.com/stephenhoran/f1gopherlib/flowControl"
 )
 
 type DataSource int

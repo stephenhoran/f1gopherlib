@@ -16,9 +16,10 @@
 package parser
 
 import (
-	"github.com/f1gopher/f1gopherlib/Messages"
 	"strconv"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib/Messages"
 )
 
 func parseWeatherData(dat map[string]interface{}, timestamp time.Time) (Messages.Weather, error) {

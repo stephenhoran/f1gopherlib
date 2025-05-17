@@ -16,8 +16,9 @@
 package flowControl
 
 import (
-	"github.com/f1gopher/f1gopherlib/Messages"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib/Messages"
 )
 
 type straightThrough struct {

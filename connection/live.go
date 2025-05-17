@@ -22,8 +22,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/f1gopher/f1gopherlib/f1log"
 	"github.com/f1gopher/signalr/v2"
+	"github.com/stephenhoran/f1gopherlib/f1log"
 	"golang.org/x/sync/errgroup"
 )
 

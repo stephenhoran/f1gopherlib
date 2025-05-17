@@ -21,8 +21,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/f1gopher/f1gopherlib/Messages"
-	"github.com/f1gopher/f1gopherlib/f1log"
 	"io"
 	"net/http"
 	"os"
@@ -30,6 +28,9 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib/Messages"
+	"github.com/stephenhoran/f1gopherlib/f1log"
 )
 
 type fileInfo struct {
@@ -95,12 +96,12 @@ func (r *replay) Connect() (error, <-chan Payload) {
 		if name == LapCountFile && !(r.session == Messages.RaceSession || r.session == Messages.SprintSession) {
 			continue
 		}
-		
+
 		// Often don't get this data for replays
 		if name == AudioStreamsFile {
 			continue
 		}
-		
+
 		r.dataFiles = append(r.dataFiles, fileInfo{
 			name:         name,
 			data:         r.get(r.eventUrl + name + ".jsonStream"),

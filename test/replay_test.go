@@ -16,16 +16,17 @@
 package test
 
 import (
-	"github.com/f1gopher/f1gopherlib"
-	"github.com/f1gopher/f1gopherlib/Messages"
-	"github.com/f1gopher/f1gopherlib/connection"
-	"github.com/f1gopher/f1gopherlib/f1log"
-	"github.com/f1gopher/f1gopherlib/parser"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib"
+	"github.com/stephenhoran/f1gopherlib/Messages"
+	"github.com/stephenhoran/f1gopherlib/connection"
+	"github.com/stephenhoran/f1gopherlib/f1log"
+	"github.com/stephenhoran/f1gopherlib/parser"
 )
 
 func TestReplay(t *testing.T) {

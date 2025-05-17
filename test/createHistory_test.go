@@ -18,9 +18,6 @@ package test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/f1gopher/f1gopherlib"
-	"github.com/f1gopher/f1gopherlib/Messages"
-	"github.com/zsefvlol/timezonemapper"
 	"io"
 	"net/http"
 	"os"
@@ -28,6 +25,10 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/stephenhoran/f1gopherlib"
+	"github.com/stephenhoran/f1gopherlib/Messages"
+	"github.com/zsefvlol/timezonemapper"
 )
 
 func TestCreateHistory(t *testing.T) {
@@ -58,7 +59,7 @@ func TestCreateHistory(t *testing.T) {
 package f1gopherlib
 
 import (
-	"github.com/f1gopher/f1gopherlib/Messages"
+	"github.com/stephenhoran/f1gopherlib/Messages"
 	"time"
 )
 
