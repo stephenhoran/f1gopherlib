@@ -321,6 +321,7 @@ func (r *replay) findSessionTimes() (dataStartTime time.Time, sessionStartTime t
 }
 
 func (r *replay) timeFromSessionData(line string) (currentTime time.Time, offsetFromStart time.Duration, err error) {
+	fmt.Println(line)
 	timeEnd := strings.Index(line, "{")
 	data := line[timeEnd:]
 	timestamp := line[timeEnd-12 : timeEnd]
