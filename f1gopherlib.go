@@ -196,7 +196,7 @@ func (r *RaceEvent) Url() string {
 	return r.urlName
 }
 
-func CreateLiveWithCache(requestedData parser.DataSource, archive string, cache string) (F1GopherLib, error) {
+func CreateLive(requestedData parser.DataSource, archive string, cache string) (F1GopherLib, error) {
 
 	// TODO - validate path
 	// TODO - create archive folder
