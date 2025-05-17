@@ -1088,7 +1088,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Autodromo Enzo e Dino Ferrari",
 		TrackYearCreated:  2020,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-19_Emilia_Romagna_Grand_Prix/2025-05-16_Practice_2/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-19_Emilia_Romagna_Grand_Prix/2025-05-16_Day_2/",
 	},
 	{
 		Country:           "Italy",
