@@ -1081,7 +1081,7 @@ var sessionHistory = [...]RaceEvent{
 	{
 		Country:           "Italy",
 		RaceTime:          time.Date(2025, 5, 18, 13, 0, 0, 0, time.UTC),
-		EventTime:         time.Date(2025, 5, 16, 15, 0, 0, 0, time.UTC),ß
+		EventTime:         time.Date(2025, 5, 16, 15, 0, 0, 0, time.UTC),
 		Type:              Messages.Practice2Session,
 		Name:              "Emilia Romagna Grand Prix",
 		timezone:          "Europe/Rome",
