@@ -1,4 +1,4 @@
-module github.com/f1gopher/f1gopherlib
+module github.com/stephenhoran/f1gopherlib
 
 go 1.23
 
