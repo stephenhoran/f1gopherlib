@@ -56,7 +56,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Yas Marina Circuit",
 		TrackYearCreated:  2021,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-12-07_Abu_Dhabi_Grand_Prix/2025-12-06_Practice_3/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-12-07_Abu_Dhabi_Grand_Prix/2025-12-06_Day_3/",
 	},
 	{
 		Country:           "UAE",
