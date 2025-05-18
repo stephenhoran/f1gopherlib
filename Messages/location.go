@@ -20,10 +20,10 @@ import (
 )
 
 type Location struct {
-	Timestamp time.Time
+	Timestamp time.Time `json:"timestamp"`
 
-	DriverNumber int
-	X            float64
-	Y            float64
-	Z            float64
+	DriverNumber int     `json:"driver_number"`
+	X            float64 `json:"x"`
+	Y            float64 `json:"y"`
+	Z            float64 `json:"z"`
 }

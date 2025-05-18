@@ -20,8 +20,8 @@ import (
 )
 
 type RaceControlMessage struct {
-	Timestamp time.Time
+	Timestamp time.Time `json:"timestamp"`
 
-	Msg  string
-	Flag FlagState
+	Msg  string    `json:"msg"`
+	Flag FlagState `json:"flag"`
 }

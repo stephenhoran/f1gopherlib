@@ -116,29 +116,29 @@ func (d DRSState) String() string {
 const MaxSegments = 40
 
 type Event struct {
-	Timestamp time.Time
+	Timestamp time.Time `json:"timestamp"`
 
-	Name string
-	Type EventType
+	Name string    `json:"name"`
+	Type EventType `json:"type"`
 
-	Status    SessionState
-	Heartbeat bool
+	Status    SessionState `json:"status"`
+	Heartbeat bool         `json:"heartbeat"`
 
-	CurrentLap      int
-	TotalLaps       int
-	Sector1Segments int
-	Sector2Segments int
-	Sector3Segments int
-	TotalSegments   int
-	SegmentFlags    [MaxSegments]FlagState
+	CurrentLap      int                    `json:"current_lap"`
+	TotalLaps       int                    `json:"total_laps"`
+	Sector1Segments int                    `json:"sector1_segments"`
+	Sector2Segments int                    `json:"sector2_segments"`
+	Sector3Segments int                    `json:"sector3_segments"`
+	TotalSegments   int                    `json:"total_segments"`
+	SegmentFlags    [MaxSegments]FlagState `json:"segment_flags"`
 
-	PitExitOpen bool
-	TrackStatus FlagState
-	SafetyCar   TrackState
+	PitExitOpen bool       `json:"pit_exit_open"`
+	TrackStatus FlagState  `json:"track_status"`
+	SafetyCar   TrackState `json:"safety_car"`
 
-	RemainingTime    time.Duration
-	SessionStartTime time.Time
-	ClockStopped     bool
+	RemainingTime    time.Duration `json:"remaining_time"`
+	SessionStartTime time.Time     `json:"session_start_time"`
+	ClockStopped     bool          `json:"clock_stopped"`
 
-	DRSEnabled DRSState
+	DRSEnabled DRSState `json:"drs_enabled"`
 }

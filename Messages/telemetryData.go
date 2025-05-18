@@ -20,13 +20,13 @@ import (
 )
 
 type Telemetry struct {
-	Timestamp    time.Time
-	DriverNumber int
+	Timestamp    time.Time `json:"timestamp"`
+	DriverNumber int       `json:"driver_number"`
 
-	RPM      int16
-	Speed    float32
-	Gear     byte
-	Throttle float32
-	Brake    float32
-	DRS      bool
+	RPM      int16   `json:"rpm"`
+	Speed    float32 `json:"speed"`
+	Gear     byte    `json:"gear"`
+	Throttle float32 `json:"throttle"`
+	Brake    float32 `json:"brake"`
+	DRS      bool    `json:"drs"`
 }

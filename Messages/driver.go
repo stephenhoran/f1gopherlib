@@ -6,17 +6,17 @@ import (
 )
 
 type DriverInfo struct {
-	StartPosition int
-	Name          string
-	ShortName     string
-	Number        int
-	Team          string
-	HexColor      string
-	Color         color.RGBA
+	StartPosition int        `json:"start_position"`
+	Name          string     `json:"name"`
+	ShortName     string     `json:"short_name"`
+	Number        int        `json:"number"`
+	Team          string     `json:"team"`
+	HexColor      string     `json:"hex_color"`
+	Color         color.RGBA `json:"color"`
 }
 
 type Drivers struct {
-	Timestamp time.Time
+	Timestamp time.Time `json:"timestamp"`
 
-	Drivers []DriverInfo
+	Drivers []DriverInfo `json:"drivers"`
 }

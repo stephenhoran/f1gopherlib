@@ -20,13 +20,13 @@ import (
 )
 
 type Weather struct {
-	Timestamp time.Time
+	Timestamp time.Time `json:"timestamp"`
 
-	AirTemp       float64
-	Humidity      float64
-	AirPressure   float64
-	Rainfall      bool
-	TrackTemp     float64
-	WindDirection float64
-	WindSpeed     float64
+	AirTemp       float64 `json:"air_temp"`
+	Humidity      float64 `json:"humidity"`
+	AirPressure   float64 `json:"air_pressure"`
+	Rainfall      bool    `json:"rainfall"`
+	TrackTemp     float64 `json:"track_temp"`
+	WindDirection float64 `json:"wind_direction"`
+	WindSpeed     float64 `json:"wind_speed"`
 }

@@ -20,7 +20,7 @@ import (
 )
 
 type EventTime struct {
-	Timestamp time.Time
+	Timestamp time.Time `json:"timestamp"`
 
-	Remaining time.Duration
+	Remaining time.Duration `json:"remaining"`
 }

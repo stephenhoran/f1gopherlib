@@ -79,54 +79,54 @@ type PitStop struct {
 }
 
 type Timing struct {
-	Timestamp time.Time
+	Timestamp time.Time `json:"timestamp"`
 
-	Position int
+	Position int `json:"position"`
 
-	Name      string
-	ShortName string
-	Number    int
-	Team      string
-	HexColor  string
-	Color     color.RGBA
+	Name      string     `json:"name"`
+	ShortName string     `json:"short_name"`
+	Number    int        `json:"number"`
+	Team      string     `json:"team"`
+	HexColor  string     `json:"hex_color"`
+	Color     color.RGBA `json:"color"`
 
-	TimeDiffToFastest       time.Duration
-	TimeDiffToPositionAhead time.Duration
-	GapToLeader             time.Duration
+	TimeDiffToFastest       time.Duration `json:"time_diff_to_fastest"`
+	TimeDiffToPositionAhead time.Duration `json:"time_diff_to_position_ahead"`
+	GapToLeader             time.Duration `json:"gap_to_leader"`
 
-	PreviousSegmentIndex   int
-	Segment                [MaxSegments]SegmentType
-	Sector1                time.Duration
-	Sector1PersonalFastest bool
-	Sector1OverallFastest  bool
-	Sector2                time.Duration
-	Sector2PersonalFastest bool
-	Sector2OverallFastest  bool
-	Sector3                time.Duration
-	Sector3PersonalFastest bool
-	Sector3OverallFastest  bool
-	LastLap                time.Duration
-	LastLapPersonalFastest bool
-	LastLapOverallFastest  bool
+	PreviousSegmentIndex   int                      `json:"previous_segment_index"`
+	Segment                [MaxSegments]SegmentType `json:"segment"`
+	Sector1                time.Duration            `json:"sector1"`
+	Sector1PersonalFastest bool                     `json:"sector1_personal_fastest"`
+	Sector1OverallFastest  bool                     `json:"sector1_overall_fastest"`
+	Sector2                time.Duration            `json:"sector2"`
+	Sector2PersonalFastest bool                     `json:"sector2_personal_fastest"`
+	Sector2OverallFastest  bool                     `json:"sector2_overall_fastest"`
+	Sector3                time.Duration            `json:"sector3"`
+	Sector3PersonalFastest bool                     `json:"sector3_personal_fastest"`
+	Sector3OverallFastest  bool                     `json:"sector3_overall_fastest"`
+	LastLap                time.Duration            `json:"last_lap"`
+	LastLapPersonalFastest bool                     `json:"last_lap_personal_fastest"`
+	LastLapOverallFastest  bool                     `json:"last_lap_overall_fastest"`
 
-	FastestLap        time.Duration
-	OverallFastestLap bool
+	FastestLap        time.Duration `json:"fastest_lap"`
+	OverallFastestLap bool          `json:"overall_fastest_lap"`
 
-	KnockedOutOfQualifying bool
-	ChequeredFlag          bool
+	KnockedOutOfQualifying bool `json:"knocked_out_of_qualifying"`
+	ChequeredFlag          bool `json:"chequered_flag"`
 
-	Tire       TireType
-	LapsOnTire int
-	Lap        int
+	Tire       TireType `json:"tire"`
+	LapsOnTire int      `json:"laps_on_tire"`
+	Lap        int      `json:"lap"`
 
-	DRSOpen bool
+	DRSOpen bool `json:"drs_open"`
 
-	Pitstops     int
-	PitStopTimes []PitStop
+	Pitstops     int       `json:"pitstops"`
+	PitStopTimes []PitStop `json:"pit_stop_times"`
 
-	Location CarLocation
+	Location CarLocation `json:"location"`
 
-	SpeedTrap                int
-	SpeedTrapPersonalFastest bool
-	SpeedTrapOverallFastest  bool
+	SpeedTrap                int  `json:"speed_trap"`
+	SpeedTrapPersonalFastest bool `json:"speed_trap_personal_fastest"`
+	SpeedTrapOverallFastest  bool `json:"speed_trap_overall_fastest"`
 }

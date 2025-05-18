@@ -20,8 +20,8 @@ import (
 )
 
 type Radio struct {
-	Timestamp time.Time
+	Timestamp time.Time `json:"timestamp"`
 
-	Driver string
-	Msg    []byte
+	Driver string `json:"driver"`
+	Msg    []byte `json:"msg"`
 }
