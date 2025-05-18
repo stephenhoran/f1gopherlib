@@ -1052,7 +1052,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Autodromo Enzo e Dino Ferrari",
 		TrackYearCreated:  2020,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-19_Emilia_Romagna_Grand_Prix/2025-05-18_Race/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-18_Emilia_Romagna_Grand_Prix/2025-05-18_Race/",
 	},
 	{
 		Country:           "Italy",
@@ -1064,7 +1064,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Autodromo Enzo e Dino Ferrari",
 		TrackYearCreated:  2020,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-19_Emilia_Romagna_Grand_Prix/2025-05-17_Qualifying/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-18_Emilia_Romagna_Grand_Prix/2025-05-17_Qualifying/",
 	},
 	{
 		Country:           "Italy",
@@ -1076,7 +1076,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Autodromo Enzo e Dino Ferrari",
 		TrackYearCreated:  2020,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-19_Emilia_Romagna_Grand_Prix/2025-05-17_Practice_3/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-18_Emilia_Romagna_Grand_Prix/2025-05-17_Practice_3/",
 	},
 	{
 		Country:           "Italy",
