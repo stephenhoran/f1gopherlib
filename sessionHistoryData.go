@@ -1088,7 +1088,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Autodromo Enzo e Dino Ferrari",
 		TrackYearCreated:  2020,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-19_Emilia_Romagna_Grand_Prix/2025-05-16_Practice_2/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-18_Emilia_Romagna_Grand_Prix/2025-05-16_Practice_2/",
 	},
 	{
 		Country:           "Italy",
@@ -1100,7 +1100,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Autodromo Enzo e Dino Ferrari",
 		TrackYearCreated:  2020,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-19_Emilia_Romagna_Grand_Prix/2025-05-16_Practice_1/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-18_Emilia_Romagna_Grand_Prix/2025-05-16_Practice_1/",
 	},
 	{
 		Country:           "USA",
@@ -1112,7 +1112,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Miami International Autodrome",
 		TrackYearCreated:  2022,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-05_Miami_Grand_Prix/2025-05-04_Race/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-04_Miami_Grand_Prix/2025-05-04_Race/",
 	},
 	{
 		Country:           "USA",
@@ -1124,7 +1124,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Miami International Autodrome",
 		TrackYearCreated:  2022,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-05_Miami_Grand_Prix/2025-05-03_Qualifying/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-04_Miami_Grand_Prix/2025-05-03_Qualifying/",
 	},
 	{
 		Country:           "USA",
@@ -1136,7 +1136,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Miami International Autodrome",
 		TrackYearCreated:  2022,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-05_Miami_Grand_Prix/2025-05-03_Sprint/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-04_Miami_Grand_Prix/2025-05-03_Sprint/",
 	},
 	{
 		Country:           "USA",
@@ -1148,7 +1148,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Miami International Autodrome",
 		TrackYearCreated:  2022,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-05_Miami_Grand_Prix/2025-05-02_Qualifying/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-04_Miami_Grand_Prix/2025-05-02_Qualifying/",
 	},
 	{
 		Country:           "USA",
@@ -1160,7 +1160,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Miami International Autodrome",
 		TrackYearCreated:  2022,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-05_Miami_Grand_Prix/2025-05-02_Practice_1/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-04_Miami_Grand_Prix/2025-05-02_Practice_1/",
 	},
 	{
 		Country:           "Saudi Arabia",
