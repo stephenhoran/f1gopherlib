@@ -52,46 +52,61 @@ func HappeningSessions() (liveSession RaceEvent, nextSession RaceEvent, hasLiveS
 	all := sessionHistory
 	utcNow := time.Now().UTC()
 
+	var currentSession *RaceEvent
+	var nextUpcomingSession *RaceEvent
+
 	for x := 0; x < len(all); x++ {
-		// If we are the same day as a session see if it is live
+		// If we are the same day as a session
 		if all[x].EventTime.Year() == utcNow.Year() &&
 			all[x].EventTime.Month() == utcNow.Month() &&
 			all[x].EventTime.Day() == utcNow.Day() {
 
-			// Start up to 55 mins before the start  of the event (50 mins is when they go to grid)
-			if utcNow.After(all[x].EventTime.Add(-time.Minute * 55)) {
+			// Check if this session is currently happening
+			sessionStart := all[x].EventTime.Add(-time.Minute * 55) // 55 mins before start
+			var sessionEnd time.Time
 
-				duringEvent := false
-				switch all[x].Type {
-				case Messages.Practice1Session, Messages.Practice2Session, Messages.Practice3Session:
-					// Usually 60 mins but tire tests are 90 so cover both since it won't overlap with anything else
-					duringEvent = utcNow.Before(all[x].EventTime.Add(time.Hour * 2))
-
-				case Messages.QualifyingSession, Messages.SprintSession, Messages.RaceSession, Messages.PreSeasonSession:
-					// Last events in the day so just assume it's that event
-					duringEvent = true
-
-				default:
-					panic("History: Unhandled session type: " + all[x].Type.String())
-				}
-
-				if duringEvent {
-					if x == 0 {
-						return all[x], RaceEvent{}, true, false
-					}
-
-					return all[x], all[x-1], true, true
-				}
+			switch all[x].Type {
+			case Messages.Practice1Session, Messages.Practice2Session, Messages.Practice3Session:
+				sessionEnd = all[x].EventTime.Add(time.Hour * 2) // 2 hours to cover both 60 and 90 min sessions
+			case Messages.QualifyingSession, Messages.SprintSession, Messages.RaceSession, Messages.PreSeasonSession:
+				sessionEnd = all[x].EventTime.Add(time.Hour * 4) // 4 hours should cover any race/quali/sprint
+			default:
+				panic("History: Unhandled session type: " + all[x].Type.String())
 			}
-		} else if all[x].EventTime.Before(utcNow) {
-			if x == 0 {
-				// No live or upcoming sessions
+
+			// If we're in the session window
+			if utcNow.After(sessionStart) && utcNow.Before(sessionEnd) {
+				currentSession = &all[x]
+				if x > 0 {
+					nextUpcomingSession = &all[x-1]
+				}
 				break
 			}
 
-			// If this is the first session before now then the next session is the one that came before it
-			return RaceEvent{}, all[x-1], false, true
+			// If this session hasn't started yet
+			if utcNow.Before(sessionStart) {
+				if nextUpcomingSession == nil || nextUpcomingSession.EventTime.After(all[x].EventTime) {
+					nextUpcomingSession = &all[x]
+				}
+			}
+		} else if all[x].EventTime.Before(utcNow) {
+			// Past sessions
+			if x > 0 && nextUpcomingSession == nil {
+				nextUpcomingSession = &all[x-1]
+			}
+			break
 		}
+	}
+
+	if currentSession != nil {
+		if nextUpcomingSession != nil {
+			return *currentSession, *nextUpcomingSession, true, true
+		}
+		return *currentSession, RaceEvent{}, true, false
+	}
+
+	if nextUpcomingSession != nil {
+		return RaceEvent{}, *nextUpcomingSession, false, true
 	}
 
 	return RaceEvent{}, RaceEvent{}, false, false
