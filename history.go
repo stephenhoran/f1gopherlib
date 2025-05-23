@@ -92,8 +92,8 @@ func HappeningSessions() (liveSession RaceEvent, nextSession RaceEvent, hasLiveS
 
 			// If nextUpcomingSession is nil here and all sessions for the day are done.
 			// We can now return the session before this one as it will be tomorrow.
-			if utcNow.After(sessionEnd) {
-				nextUpcomingSession = &all[x-1]
+			if utcNow.After(sessionEnd) && nextUpcomingSession == nil {
+				nextUpcomingSession = &all[x]
 			}
 
 		} else if all[x].EventTime.Before(utcNow) {
