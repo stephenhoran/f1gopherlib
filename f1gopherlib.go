@@ -196,6 +196,48 @@ func (r *RaceEvent) Url() string {
 	return r.urlName
 }
 
+// CreateLiveRealtime - Create a live session that will be updated in realtime as the data comes in
+// without a need for archiving or caching and no ticker.
+//
+// This endpoint also supports external context.
+func CreateLiveRealtime(requestedData parser.DataSource) (F1GopherLib, error) {
+	currentEvent, exists := liveEvent()
+
+	// No event happening or about to happen so nothing we can do
+	if !exists {
+		return nil, errors.New("No live event currently happening")
+	}
+
+	f1Log.Infof("Creating live session for: %v", currentEvent.string())
+
+	data := f1gopherlib{
+		weather:             make(chan Messages.Weather, weatherChannelSize),
+		raceControlMessages: make(chan Messages.RaceControlMessage, rcmChannelSize),
+		timing:              make(chan Messages.Timing, timingChannelSize),
+		event:               make(chan Messages.Event, eventChannelSize),
+		telemetry:           make(chan Messages.Telemetry, telemetryChannelSize),
+		location:            make(chan Messages.Location, locationChannelSize),
+		eventTime:           make(chan Messages.EventTime, eventTimeChannelSize),
+		radio:               make(chan Messages.Radio, radioChannelSize),
+		drivers:             make(chan Messages.Drivers, driversChannelSize),
+
+		session:           currentEvent.Type,
+		name:              currentEvent.Name,
+		timezone:          currentEvent.Timezone(),
+		sessionStart:      currentEvent.EventTime,
+		track:             currentEvent.TrackName,
+		trackYear:         currentEvent.TrackYearCreated,
+		timeLostInPitlane: currentEvent.TimeLostInPitlane,
+	}
+	data.ctx, data.ctxShutdown = context.WithCancel(context.Background())
+
+	err := data.connectLiveRealtime(requestedData, currentEvent)
+	if err != nil {
+		return nil, err
+	}
+	return &data, nil
+}
+
 func CreateLive(requestedData parser.DataSource, archive string, cache string) (F1GopherLib, error) {
 
 	// TODO - validate path
@@ -309,6 +351,46 @@ func CreateReplay(
 		return nil, err
 	}
 	return &data, nil
+}
+
+func (f *f1gopherlib) connectLiveRealtime(requestedData parser.DataSource, event RaceEvent) error {
+	f.connection = connection.CreateLive(f.ctx, &f.wg, f1Log)
+	err, dataChannel := f.connection.Connect()
+	if err != nil {
+		return err
+	}
+
+	f.replayTiming = flowControl.CreateFlowControl(
+		f.ctx,
+		&f.wg,
+		flowControl.StraightThrough,
+		f.weather,
+		f.raceControlMessages,
+		f.timing,
+		f.event,
+		f.telemetry,
+		f.location,
+		f.eventTime,
+		f.radio,
+		f.drivers)
+
+	assetStore := connection.CreateAssetStore(event.Url(), "", f1Log)
+
+	f.dataHandler = parser.Create(
+		f.ctx,
+		&f.wg,
+		requestedData,
+		dataChannel,
+		f.replayTiming,
+		assetStore,
+		Messages.RaceSession,
+		f1Log,
+		event.Timezone())
+
+	go f.dataHandler.Process()
+	go f.replayTiming.Run()
+	// TODO - connect to live dataf.connection = connection.CreateLive(f.ctx, &f.wg, f1Log)
+	return nil
 }
 
 func (f *f1gopherlib) connectLive(requestedData parser.DataSource, archiveFile string, event RaceEvent, cache string) error {
