@@ -62,7 +62,7 @@ func HappeningSessions() (liveSession RaceEvent, nextSession RaceEvent, hasLiveS
 			all[x].EventTime.Day() == utcNow.Day() {
 
 			// Check if this session is currently happening
-			sessionStart := all[x].EventTime.Add(-time.Minute * 55) // 55 mins before start
+			sessionStart := all[x].EventTime.Add(-time.Minute * 5) // 5 mins before start
 			var sessionEnd time.Time
 
 			switch all[x].Type {
@@ -89,6 +89,13 @@ func HappeningSessions() (liveSession RaceEvent, nextSession RaceEvent, hasLiveS
 					nextUpcomingSession = &all[x]
 				}
 			}
+
+			// If nextUpcomingSession is nil here and all sessions for the day are done.
+			// We can now return the session before this one as it will be tomorrow.
+			if utcNow.After(sessionEnd) {
+				nextUpcomingSession = &all[x-1]
+			}
+
 		} else if all[x].EventTime.Before(utcNow) {
 			// Past sessions
 			if x > 0 && nextUpcomingSession == nil {
