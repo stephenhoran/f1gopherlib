@@ -992,7 +992,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Circuit de Monaco",
 		TrackYearCreated:  2018,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-26_Monaco_Grand_Prix/2025-05-25_Race/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-25_Monaco_Grand_Prix/2025-05-25_Race/",
 	},
 	{
 		Country:           "Monaco",
@@ -1004,7 +1004,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Circuit de Monaco",
 		TrackYearCreated:  2018,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-26_Monaco_Grand_Prix/2025-05-24_Qualifying/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-25_Monaco_Grand_Prix/2025-05-24_Qualifying/",
 	},
 	{
 		Country:           "Monaco",
@@ -1016,7 +1016,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Circuit de Monaco",
 		TrackYearCreated:  2018,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-26_Monaco_Grand_Prix/2025-05-24_Practice_3/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-25_Monaco_Grand_Prix/2025-05-24_Practice_3/",
 	},
 	{
 		Country:           "Monaco",
@@ -1028,7 +1028,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Circuit de Monaco",
 		TrackYearCreated:  2018,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-26_Monaco_Grand_Prix/2025-05-23_Practice_2/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-25_Monaco_Grand_Prix/2025-05-23_Practice_2/",
 	},
 	{
 		Country:           "Monaco",
@@ -1040,7 +1040,7 @@ var sessionHistory = [...]RaceEvent{
 		TrackName:         "Circuit de Monaco",
 		TrackYearCreated:  2018,
 		TimeLostInPitlane: time.Duration(20000) * time.Millisecond,
-		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-26_Monaco_Grand_Prix/2025-05-23_Practice_1/",
+		urlName:           "https://livetiming.formula1.com/static/2025/2025-05-25_Monaco_Grand_Prix/2025-05-23_Practice_1/",
 	},
 	{
 		Country:           "Italy",
