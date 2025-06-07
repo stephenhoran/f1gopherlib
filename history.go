@@ -16,6 +16,7 @@
 package f1gopherlib
 
 import (
+	"strings"
 	"time"
 
 	"github.com/stephenhoran/f1gopherlib/Messages"
@@ -46,6 +47,17 @@ func RaceHistory() []RaceEvent {
 	}
 
 	return result
+}
+
+func GetSessionHistory(year int, eventName string, sessionType Messages.SessionType) RaceEvent {
+	history := RaceHistory()
+
+	for _, event := range history {
+		if event.RaceTime.Year() == year && strings.Contains(event.Name, eventName) && event.Type == sessionType {
+			return event
+		}
+	}
+	return RaceEvent{}
 }
 
 func HappeningSessions() (liveSession RaceEvent, nextSession RaceEvent, hasLiveSession bool, hasNextSession bool) {

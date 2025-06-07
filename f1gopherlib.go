@@ -21,7 +21,6 @@ import (
 	"fmt"
 	"io"
 	"path/filepath"
-	"strings"
 	"sync"
 	"time"
 
@@ -58,8 +57,6 @@ type F1GopherLib interface {
 	SkipToSessionStart()
 	TogglePause()
 	IsPaused() bool
-
-	GetSessionHistory(year int, eventName string, sessionType Messages.SessionType) RaceEvent
 
 	Close()
 }
@@ -598,15 +595,6 @@ func (f *f1gopherlib) TogglePause() {
 
 func (f *f1gopherlib) IsPaused() bool {
 	return f.replayTiming.IsPaused()
-}
-
-func (f *f1gopherlib) GetSessionHistory(year int, eventName string, sessionType Messages.SessionType) RaceEvent {
-	for _, event := range sessionHistory {
-		if event.RaceTime.Year() == year && strings.Contains(event.Name, eventName) && event.Type == sessionType {
-			return event
-		}
-	}
-	return RaceEvent{}
 }
 
 func (f *f1gopherlib) Close() {
