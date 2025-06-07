@@ -21,6 +21,7 @@ import (
 	"fmt"
 	"io"
 	"path/filepath"
+	"strings"
 	"sync"
 	"time"
 
@@ -57,6 +58,8 @@ type F1GopherLib interface {
 	SkipToSessionStart()
 	TogglePause()
 	IsPaused() bool
+
+	GetSessionHistory(year int, eventName string, sessionType Messages.SessionType) RaceEvent
 
 	Close()
 }
@@ -232,49 +235,6 @@ func CreateLiveRealtime(requestedData parser.DataSource) (F1GopherLib, error) {
 	data.ctx, data.ctxShutdown = context.WithCancel(context.Background())
 
 	err := data.connectLiveRealtime(requestedData, currentEvent)
-	if err != nil {
-		return nil, err
-	}
-	return &data, nil
-}
-
-func CreateLive(requestedData parser.DataSource, archive string, cache string) (F1GopherLib, error) {
-
-	// TODO - validate path
-	// TODO - create archive folder
-
-	currentEvent, exists := liveEvent()
-
-	// No event happening or about to happen so nothing we can do
-	if !exists {
-		return nil, errors.New("No live event currently happening")
-	}
-
-	f1Log.Infof("Creating live session for: %v", currentEvent.string())
-
-	data := f1gopherlib{
-		weather:             make(chan Messages.Weather, weatherChannelSize),
-		raceControlMessages: make(chan Messages.RaceControlMessage, rcmChannelSize),
-		timing:              make(chan Messages.Timing, timingChannelSize),
-		event:               make(chan Messages.Event, eventChannelSize),
-		telemetry:           make(chan Messages.Telemetry, telemetryChannelSize),
-		location:            make(chan Messages.Location, locationChannelSize),
-		eventTime:           make(chan Messages.EventTime, eventTimeChannelSize),
-		radio:               make(chan Messages.Radio, radioChannelSize),
-		drivers:             make(chan Messages.Drivers, driversChannelSize),
-
-		archive:           archive,
-		session:           currentEvent.Type,
-		name:              currentEvent.Name,
-		timezone:          currentEvent.Timezone(),
-		sessionStart:      currentEvent.EventTime,
-		track:             currentEvent.TrackName,
-		trackYear:         currentEvent.TrackYearCreated,
-		timeLostInPitlane: currentEvent.TimeLostInPitlane,
-	}
-	data.ctx, data.ctxShutdown = context.WithCancel(context.Background())
-
-	err := data.connectLive(requestedData, archive, currentEvent, cache)
 	if err != nil {
 		return nil, err
 	}
@@ -638,6 +598,15 @@ func (f *f1gopherlib) TogglePause() {
 
 func (f *f1gopherlib) IsPaused() bool {
 	return f.replayTiming.IsPaused()
+}
+
+func (f *f1gopherlib) GetSessionHistory(year int, eventName string, sessionType Messages.SessionType) RaceEvent {
+	for _, event := range sessionHistory {
+		if event.RaceTime.Year() == year && strings.Contains(event.Name, eventName) && event.Type == sessionType {
+			return event
+		}
+	}
+	return RaceEvent{}
 }
 
 func (f *f1gopherlib) Close() {
